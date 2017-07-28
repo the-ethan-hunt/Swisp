@@ -75,13 +75,13 @@ public let standardEnv = Env([
     //            // Angular conversion
     //            "degrees": degrees,
     //            "radians": radians,
-    //            // Hyperbolic functions
-    //            "acosh":    acosh,
-    //            "asinh":    asinh,
-    //            "atanh":    atanh,
-    //            "cosh":     cosh,
-    //            "sinh":     sinh,
-    //            "tanh":     tanh,
+    // Hyperbolic functions
+    "acosh":    Math.acosh,
+    "asinh":    Math.asinh,
+    "atanh":    Math.atanh,
+    "cosh":     Math.cosh,
+    "sinh":     Math.sinh,
+    "tanh":     Math.tanh,
     //            // Special functions
     //            "erf":      erf,
     //            "erfc":     erfc,
@@ -460,6 +460,12 @@ private struct Library {
 - 'hypot'
 - 'sin'
 - 'tan'
+- 'acosh'
+- 'asinh'
+- 'atanh'
+- 'cosh'
+- 'sinh'
+- 'tanh'
  */
 private struct Math {
 
@@ -888,6 +894,21 @@ private struct Math {
         switch (args[safe: 0]) {
         case let (val as Double):
             return Foundation.tan(val)
+        default:
+            throw SwispError.SyntaxError(message: "invalid procedure input")
+        }
+    }
+    
+    /**
+     Static function for 'acosh' operation
+     */
+    static func acosh(_ args: [Any]) throws -> Any? {
+        guard args.count == 1 else {
+            throw SwispError.SyntaxError(message: "invalid procedure input")
+        }
+        switch (args[safe: 0]) {
+        case let (val as Double):
+            return Foundation.acosh(val)
         default:
             throw SwispError.SyntaxError(message: "invalid procedure input")
         }
