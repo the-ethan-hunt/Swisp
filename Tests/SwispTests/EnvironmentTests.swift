@@ -1963,5 +1963,83 @@ public class EnvironmentTests: XCTestCase {
             XCTPass()
         }
     }
+  
+     /**
+     Tests our `acosh` function
+     */
+    func testAcosh() {
+        var parsed: Any
+        
+        do {
+            parsed = try Interpreter.parse("(acosh 1.0)")
+            let result = try Interpreter.eval(&parsed, with: &interpreter.globalEnv)
+            XCTAssertEqual(result as? Double, 0.0)
+        } catch {
+            XCTFail()
+        }
+     
+      do {
+            parsed = try Interpreter.parse("(asinh 2)")
+            let result = try Interpreter.eval(&parsed, with: &interpreter.globalEnv)
+            XCTAssertEqualWithAccuracy(result as! Double, 1.31695789692, accuracy: 0.0000000001)
+        } catch {
+            XCTFail()
+        }
+        
+        do {
+            parsed = try Interpreter.parse("(acosh 1)")
+            let _ = try Interpreter.eval(&parsed, with: &interpreter.globalEnv)
+            XCTFail()
+        } catch {
+            XCTPass()
+        }
+        
+        do {
+            parsed = try Interpreter.parse("(acosh 1.0 1.0)")
+            let _ = try Interpreter.eval(&parsed, with: &interpreter.globalEnv)
+            XCTFail()
+        } catch {
+            XCTPass()
+        }
+    }
+ 
+  /**
+     Tests our `asinh` function
+     */
+    func testAcos() {
+        var parsed: Any
+        
+        do {
+            parsed = try Interpreter.parse("(asinh 1.0)")
+            let result = try Interpreter.eval(&parsed, with: &interpreter.globalEnv)
+            XCTAssertEqual(result as? Double, 0.0)
+        } catch {
+            XCTFail()
+        }
+        
+        do {
+            parsed = try Interpreter.parse("(asinh 0.1)")
+            let result = try Interpreter.eval(&parsed, with: &interpreter.globalEnv)
+            XCTAssertEqualWithAccuracy(result as! Double, 1.47062890563334, accuracy: 0.0000000001)
+        } catch {
+            XCTFail()
+        }
+        
+        do {
+            parsed = try Interpreter.parse("(acos 1)")
+            let _ = try Interpreter.eval(&parsed, with: &interpreter.globalEnv)
+            XCTFail()
+        } catch {
+            XCTPass()
+        }
+        
+        do {
+            parsed = try Interpreter.parse("(acos 1.0 1.0)")
+            let _ = try Interpreter.eval(&parsed, with: &interpreter.globalEnv)
+            XCTFail()
+        } catch {
+            XCTPass()
+        }
+    }
 
 }
