@@ -913,5 +913,80 @@ private struct Math {
             throw SwispError.SyntaxError(message: "invalid procedure input")
         }
     }
+    
+    /**
+     Static function for 'asinh' operation
+     */
+    static func asinh(_ args: [Any]) throws -> Any? {
+        guard args.count == 1 else {
+            throw SwispError.SyntaxError(message: "invalid procedure input")
+        }
+        switch (args[safe: 0]) {
+        case let (val as Double):
+            return Foundation.asinh(val)
+        default:
+            throw SwispError.SyntaxError(message: "invalid procedure input")
+        }
+    }
 
+    /**
+     Static function for 'atanh' function
+     */
+    static func atanh(_ args: [Any]) throws -> Any? {
+        guard args.count == 1 else {
+            throw SwispError.SyntaxError(message: "invalid procedure input")
+        }
+        switch (args[safe: 0]) {
+        case let (val as Double):
+            return Foundation.atanh(val)
+        default:
+            throw SwispError.SyntaxError(message: "invalid procedure input")
+        }
+    }
+    
+    /**
+     Static function for 'cosh' function
+     */
+    static func cosh(_ args: [Any]) throws -> Any? {
+        guard args.count == 1 else {
+            throw SwispError.SyntaxError(message: "invalid procedure input")
+        }
+        switch (args[safe: 0]) {
+        case let (val as Double):
+            return Foundation.cosh(val)
+        default:
+            throw SwispError.SyntaxError(message: "invalid procedure input")
+        }
+    }
+    
+    /**
+     Static function for 'sinh' function
+     */
+    static func sinh(_ args: [Any]) throws -> Any? {
+        guard args.count == 1 else {
+            throw SwispError.SyntaxError(message: "invalid procedure input")
+        }
+        switch (args[safe: 0]) {
+        case let (val as Double):
+            return Foundation.sinh(val)
+        default:
+            throw SwispError.SyntaxError(message: "invalid procedure input")
+        }
+    }
+    
+    /**
+     Static function for 'tanh' function
+     */
+    
+    static func tanh(_ args: [Any]) throws -> Any? {
+        guard args.count == 1 else {
+            throw SwispError.SyntaxError(message: "invalid procedure input")
+        }
+        switch (args[safe: 0]) {
+        case let (val as Double):
+            return Foundation.tanh(val)
+        default:
+            throw SwispError.SyntaxError(message: "invalid procedure input")
+        }
+    }
 }
